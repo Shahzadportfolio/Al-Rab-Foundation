@@ -3,290 +3,459 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al-Rab Foundation | Empowering Girls & Supporting Orphans</title>
-    
+    <title>Al-Rabb Foundation - Empowering Girls & Supporting Humanity</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-    
+    <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { font-family: 'Poppins', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
-        .bg-brand { background-color: #2fc5ff; }
-        .text-brand { color: #2fc5ff; }
-        .border-brand { border-color: #2fc5ff; }
-        
-        /* Lifeline Style Sticky Header */
-        header.sticky-active {
-            background: white !important;
-            padding: 10px 0 !important;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
-            position: fixed;
-            top: 0;
-            color: #1a1a1a !important;
-        }
-        header.sticky-active .nav-link, header.sticky-active .logo-text { color: #1a1a1a !important; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
-        /* Slider Animations */
-        .swiper-slide-active h1 { animation: fadeInUp 0.8s both 0.3s; }
-        .swiper-slide-active p { animation: fadeInUp 0.8s both 0.5s; }
-        .swiper-slide-active .hero-btn { animation: fadeInUp 0.8s both 0.7s; }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* Top Hero Slider Fade */
+        .hero-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1.2s ease-in-out;
+            background-size: cover;
+            background-position: center;
         }
+        .hero-slide.active { opacity: 1; }
 
-        .hero-overlay { background: linear-gradient(to right, rgba(0,0,0,0.85) 30%, transparent); }
-        
-        /* Attractive Icon Box Animation */
-        .icon-box { transition: all 0.4s ease-in-out; }
-        .group:hover .icon-box { 
-            background: #2fc5ff; 
-            color: white; 
-            transform: translateY(-5px) rotateY(10deg);
-            box-shadow: 0 10px 20px rgba(47, 197, 255, 0.3);
-        }
+        /* Smooth Category Card Hover */
+        .category-card { transition: all 0.3s ease; }
+        .category-card:hover { transform: translateY(-8px); }
     </style>
 </head>
-<body class="bg-white text-gray-800">
+<body class="bg-[#fdfbf2]">
 
-    <div class="bg-[#111] text-white text-[10px] py-3 px-6 md:px-20 flex justify-between items-center uppercase tracking-[2px] z-[60] relative">
-        <div class="flex gap-8">
-            <span><i class="fa-solid fa-location-dot text-brand mr-2"></i> Based in Pakistan</span>
-            <span class="hidden md:inline"><i class="fa-solid fa-envelope text-brand mr-2"></i> info@alrabfoundation.org</span>
-        </div>
-        <div class="flex gap-5 font-bold">
-            <a href="#" class="hover:text-brand transition"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="hover:text-brand transition"><i class="fa-brands fa-instagram"></i></a>
-        </div>
-    </div>
-
-    <header id="main-header" class="absolute w-full z-50 transition-all duration-500 py-7 border-b border-white/10">
-        <div class="container mx-auto px-6 md:px-20 flex justify-between items-center">
-            <div class="logo-text text-2xl font-black tracking-tighter text-white uppercase italic">
-                AL-RAB <span class="text-brand">FOUNDATION</span>
+    <header class="w-full bg-white shadow-sm sticky top-0 z-50">
+        <div class="bg-[#6a1b4d] text-white py-2.5 px-4 md:px-8">
+            <div class="max-w-7xl mx-auto flex justify-between items-center text-[13px]">
+                <div class="flex gap-6">
+                    <div class="flex items-center gap-2"><i data-lucide="map-pin" class="text-[#ff6b00] w-4 h-4"></i><span>Pakistan Based NGO</span></div>
+                    <div class="flex items-center gap-2"><i data-lucide="mail" class="text-[#ff6b00] w-4 h-4"></i><span>info@alrabbfoundation.org</span></div>
+                </div>
+                <div class="flex gap-3">
+                    <i data-lucide="facebook" class="w-4 h-4 cursor-pointer hover:text-[#ff6b00]"></i>
+                    <i data-lucide="instagram" class="w-4 h-4 cursor-pointer hover:text-[#ff6b00]"></i>
+                </div>
             </div>
-            
-            <ul class="hidden lg:flex gap-10 font-bold text-[12px] uppercase tracking-widest text-white">
-                <li><a href="index.html" class="text-brand">Home</a></li>
-                <li><a href="about.html" class="nav-link hover:text-brand transition">About Us</a></li>
-                <li><a href="#programs" class="nav-link hover:text-brand transition">Our Focus</a></li>
-                <li><a href="#solar" class="nav-link hover:text-brand transition">Solar Project</a></li>
-                <li><a href="#contact" class="nav-link hover:text-brand transition">Contact</a></li>
-            </ul>
-
-            <a href="#" class="bg-brand text-white px-8 py-3 rounded-sm text-[11px] font-black uppercase tracking-widest hover:bg-white hover:text-black transition-all shadow-xl shadow-brand/20">Donate Now</a>
+        </div>
+        <div class="max-w-7xl mx-auto py-4 px-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-[#ff6b00] rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                    <i data-lucide="heart" class="text-white w-6 h-6"></i>
+                </div>
+                <span class="text-2xl font-black text-[#1a1a1a]">Al-Rabb<span class="text-[#ff6b00]">Foundation</span></span>
+            </div>
+            <nav class="hidden lg:block">
+    <ul class="flex items-center gap-8 font-semibold text-[#444444]">
+        <li class="hover:text-[#ff6b00] cursor-pointer">
+            <a href="index.html">Home</a>
+        </li>
+        <li class="text-[#ff6b00] cursor-pointer">
+            <a href="about.html">Who We Are</a>
+        </li>
+        <li class="hover:text-[#ff6b00] cursor-pointer">
+            <a href="#programs">Our Programs</a>
+        </li>
+        <li class="hover:text-[#ff6b00] cursor-pointer">
+            <a href="#footer">Contact</a>
+        </li>
+    </ul>
+</nav>
+            <a href="#donate" class="bg-[#ff6b00] text-white font-bold py-3 px-8 rounded-full shadow-md hover:bg-[#e66000] transition-colors">Donate Now</a>
         </div>
     </header>
 
-    <div class="swiper mySwiper h-[90vh] w-full">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide relative flex items-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=1920');">
-                <div class="absolute inset-0 hero-overlay"></div>
-                <div class="container mx-auto px-6 md:px-20 relative z-10 text-white">
-                    <h4 class="text-brand font-bold uppercase tracking-[6px] mb-4 text-sm">Empowering Girls. Supporting Orphans.</h4>
-                    <h1 class="text-5xl md:text-8xl font-black mb-6 leading-tight max-w-4xl uppercase tracking-tighter italic">Educate <br> <span class="text-brand">& Support</span></h1>
-                    <p class="text-lg md:text-xl mb-10 max-w-2xl text-gray-300 font-light leading-relaxed">Dedicated to providing religious and worldly education while extending compassionate support to vulnerable families across Pakistan.</p>
-                    <div class="hero-btn">
-                        <button class="bg-brand px-12 py-5 rounded-sm font-black uppercase text-xs tracking-widest hover:bg-white hover:text-black transition">Our Programs</button>
-                    </div>
-                </div>
+    <div class="relative w-full h-[650px] overflow-hidden bg-black">
+        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070');">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
+                <h1 class="text-white text-5xl md:text-7xl font-bold mb-4">Empowering Girls. Supporting Orphans. Serving Humanity.</h1>
+                <p class="text-white text-xl opacity-90 max-w-xl mb-8 font-medium">Providing religious and worldly education for girls while extending compassionate support to orphans and vulnerable families in Pakistan.</p>
+                <a href="#donate" class="bg-[#ff6b00] text-white font-bold py-4 px-10 rounded-full shadow-lg hover:scale-105 transition-transform">Donate Now</a>
             </div>
-            <div class="swiper-slide relative flex items-center bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=1920');">
-                <div class="absolute inset-0 hero-overlay"></div>
-                <div class="container mx-auto px-6 md:px-20 relative z-10 text-white text-center">
-                    <h4 class="text-brand font-bold uppercase tracking-[6px] mb-4 text-sm">Serving Humanity</h4>
-                    <h1 class="text-5xl md:text-8xl font-black mb-6 uppercase tracking-tighter italic">Dignity <br> <span class="text-brand">& Care</span></h1>
-                    <p class="text-lg md:text-xl mb-10 max-w-2xl mx-auto text-gray-300 font-light leading-relaxed">We believe that education and care can transform lives and build a stronger foundation for our society.</p>
-                    <div class="hero-btn">
-                        <button class="bg-white text-black px-12 py-5 rounded-sm font-black uppercase text-xs tracking-widest hover:bg-brand hover:text-white transition">Join Us Now</button>
-                    </div>
-                </div>
+        </div>
+        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2070');">
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
+                <h1 class="text-white text-5xl md:text-7xl font-bold mb-4">Transforming Lives Through Education</h1>
+                <a href="#programs" class="bg-[#ff6b00] text-white font-bold py-4 px-10 rounded-full shadow-lg hover:scale-105 transition-transform">Explore Programs</a>
             </div>
+        </div>
+
+        <div class="absolute bottom-0 left-0 w-full z-20">
+            <svg viewBox="0 0 1440 120" fill="none" class="w-full h-auto block transform translate-y-1">
+                <path d="M0 120H1440V45.5C1440 45.5 1380 30 1320 35C1260 40 1200 65 1140 60C1080 55 1020 25 960 30C900 35 840 65 780 60C720 55 660 25 600 30C540 35 480 65 420 60C360 55 300 25 240 30C180 35 120 65 60 60C0 55 0 45.5 0 45.5V120Z" fill="#fdfbf2"/>
+            </svg>
         </div>
     </div>
 
-    <section id="programs" class="py-28 px-6 md:px-20 bg-gray-50">
-        <div class="text-center mb-20">
-            <span class="text-brand font-bold text-xs uppercase tracking-[6px] mb-3 block">Service to Humanity</span>
-            <h2 class="text-4xl md:text-5xl font-black uppercase text-gray-900 tracking-tighter uppercase">Our Focus Areas</h2>
-            <div class="w-24 h-2 bg-brand mx-auto mt-6"></div>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
-            <div class="bg-white group p-10 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-4 text-center">
-                <div class="icon-box w-20 h-20 bg-brand/10 text-brand rounded-full flex items-center justify-center text-3xl mb-6 mx-auto">
-                    <i class="fa-solid fa-book-open"></i>
-                </div>
-                <h3 class="font-black text-lg mb-4 uppercase">Girls' Education</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Providing Islamic education and worldly knowledge to build confident girls.</p>
+    <section id="donate" class="max-w-7xl mx-auto px-6 py-12">
+        <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+            <div class="max-w-md">
+                <h2 class="text-[54px] leading-tight font-black text-[#1a1a1a] mb-2">Support Our Work</h2>
+                <p class="text-gray-500 text-lg leading-relaxed font-medium">Join us in creating a brighter more compassionate world</p>
             </div>
-            <div class="bg-white group p-10 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-4 text-center">
-                <div class="icon-box w-20 h-20 bg-brand/10 text-brand rounded-full flex items-center justify-center text-3xl mb-6 mx-auto">
-                    <i class="fa-solid fa-child-reaching"></i>
+            
+            <div class="flex flex-col gap-6 w-full lg:w-auto">
+                <div class="flex flex-wrap gap-4">
+                    <button class="border-2 border-[#ff6b00] text-[#ff6b00] font-bold py-4 px-10 rounded-full hover:bg-[#ff6b00] hover:text-white transition-all text-xl">$10</button>
+                    <button class="border-2 border-[#ff6b00] text-[#ff6b00] font-bold py-4 px-10 rounded-full hover:bg-[#ff6b00] hover:text-white transition-all text-xl">$25</button>
+                    <button class="border-2 border-[#ff6b00] text-[#ff6b00] font-bold py-4 px-10 rounded-full hover:bg-[#ff6b00] hover:text-white transition-all text-xl">$50</button>
+                    <button class="border-2 border-[#ff6b00] text-[#ff6b00] font-bold py-4 px-10 rounded-full hover:bg-[#ff6b00] hover:text-white transition-all text-xl">$100</button>
                 </div>
-                <h3 class="font-black text-lg mb-4 uppercase">Orphan Support</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Monthly support, education assistance, and care for orphan children.</p>
-            </div>
-            <div class="bg-white group p-10 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-4 text-center">
-                <div class="icon-box w-20 h-20 bg-brand/10 text-brand rounded-full flex items-center justify-center text-3xl mb-6 mx-auto">
-                    <i class="fa-solid fa-bowl-food"></i>
-                </div>
-                <h3 class="font-black text-lg mb-4 uppercase">Food & Ration</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Regular distribution for poor families during emergencies and Ramadan.</p>
-            </div>
-            <div class="bg-white group p-10 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-4 text-center">
-                <div class="icon-box w-20 h-20 bg-brand/10 text-brand rounded-full flex items-center justify-center text-3xl mb-6 mx-auto">
-                    <i class="fa-solid fa-faucet-drip"></i>
-                </div>
-                <h3 class="font-black text-lg mb-4 uppercase">Clean Water</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Installation of water wells and access to safe drinking water.</p>
-            </div>
-            <div class="bg-white group p-10 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-4 text-center">
-                <div class="icon-box w-20 h-20 bg-brand/10 text-brand rounded-full flex items-center justify-center text-3xl mb-6 mx-auto">
-                    <i class="fa-solid fa-house-medical"></i>
-                </div>
-                <h3 class="font-black text-lg mb-4 uppercase">Medical Aid</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Helping deserving patients with medical treatment and medicines.</p>
-            </div>
-            <div class="bg-white group p-10 rounded-2xl shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-4 text-center">
-                <div class="icon-box w-20 h-20 bg-brand/10 text-brand rounded-full flex items-center justify-center text-3xl mb-6 mx-auto">
-                    <i class="fa-solid fa-moon"></i>
-                </div>
-                <h3 class="font-black text-lg mb-4 uppercase">Ramadan Programs</h3>
-                <p class="text-sm text-gray-500 leading-relaxed">Iftar drives, Zakat and Sadaqah programs during the holy month.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-24 bg-brand text-white text-center relative overflow-hidden">
-        <div class="container mx-auto px-6 relative z-10">
-            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-6">Wanna Be a Volunteer?</h2>
-            <p class="text-xl opacity-90 mb-10 max-w-3xl mx-auto font-light leading-relaxed">Join Al-Rab Foundation today and help us bring hope to those in need. Your effort transforms lives.</p>
-            <button class="bg-[#111] text-white px-14 py-5 rounded-sm font-black uppercase text-xs tracking-[3px] hover:bg-white hover:text-brand transition shadow-2xl">Join Our Team</button>
-        </div>
-        <div class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-20 -mt-20"></div>
-    </section>
-
-    <section id="solar" class="py-32 bg-white px-6 md:px-20 overflow-hidden">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
-            <div class="relative group">
-                <div class="absolute -top-10 -left-10 w-40 h-40 bg-brand/10 rounded-full"></div>
-                <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-8 border-gray-50">
-                    <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&w=1200&q=80" alt="Solar Project" class="w-full h-[450px] object-cover transform group-hover:scale-105 transition duration-700">
-                </div>
-                <div class="absolute -bottom-8 -right-8 bg-[#111] text-white p-10 rounded-2xl z-20 shadow-2xl">
-                    <p class="text-brand font-black text-5xl uppercase italic tracking-tighter leading-none">SOLAR <br> <span class="text-white text-3xl">POWER</span></p>
-                </div>
-            </div>
-            <div>
-                <span class="text-brand font-bold text-xs uppercase tracking-[6px]">Project Seven</span>
-                <h2 class="text-4xl md:text-5xl font-black mt-4 mb-8 uppercase tracking-tighter text-gray-900 leading-tight">Solar Energy for <br> Mosques & Madaris</h2>
-                <p class="text-gray-600 mb-8 leading-relaxed text-lg font-light">Providing solar power systems to Islamic educational institutions to ensure uninterrupted electricity, reduce costs, and support learning.</p>
-                <button class="bg-brand text-white px-12 py-5 rounded-sm font-black uppercase text-xs tracking-widest hover:bg-black transition shadow-xl">Support Project</button>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="py-28 bg-gray-50 px-6 md:px-20">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-20">
-            <div>
-                <span class="text-brand font-bold text-xs uppercase tracking-[6px]">Contact Us</span>
-                <h2 class="text-4xl md:text-5xl font-black mt-4 mb-10 uppercase tracking-tighter text-gray-900">Get In Touch</h2>
-                <div class="space-y-10">
-                    <div class="flex items-center gap-6">
-                        <div class="w-14 h-14 bg-white shadow-lg flex items-center justify-center text-brand text-xl rounded-full transition-transform hover:scale-110"><i class="fa-solid fa-phone"></i></div>
-                        <div><p class="text-[10px] font-bold uppercase text-gray-400">Phone</p><p class="font-bold text-lg">+92 300 1234567</p></div>
+                
+                <div class="flex flex-col md:flex-row gap-5">
+                    <div class="relative flex-grow min-w-[300px]">
+                        <span class="absolute left-0 top-0 bottom-0 bg-[#ff6b00] text-white flex items-center px-6 rounded-l-full font-bold text-xl">$</span>
+                        <input type="text" placeholder="Custom Amount" class="w-full border-2 border-[#ff6b00] py-4 pl-16 pr-6 rounded-full outline-none text-xl font-medium focus:ring-2 focus:ring-[#ff6b00]/20">
                     </div>
-                    <div class="flex items-center gap-6">
-                        <div class="w-14 h-14 bg-white shadow-lg flex items-center justify-center text-brand text-xl rounded-full transition-transform hover:scale-110"><i class="fa-solid fa-envelope"></i></div>
-                        <div><p class="text-[10px] font-bold uppercase text-gray-400">Email</p><p class="font-bold text-lg">info@alrabfoundation.org</p></div>
-                    </div>
+                    <button onclick="alert('Thank you! Redirecting to payment...')" class="bg-[#3e447a] text-white font-black py-4 px-16 rounded-full text-xl hover:bg-[#2d325a] transition-all shadow-lg">Proceed</button>
                 </div>
-            </div>
-            <div class="bg-white p-10 md:p-14 rounded-3xl shadow-2xl border border-gray-100">
-                <form class="space-y-6">
-                    <input type="text" placeholder="Full Name" class="w-full bg-gray-50 border border-gray-200 p-5 rounded-xl text-sm outline-none focus:border-brand transition-all">
-                    <input type="email" placeholder="Email Address" class="w-full bg-gray-50 border border-gray-200 p-5 rounded-xl text-sm outline-none focus:border-brand transition-all">
-                    <textarea placeholder="Your Message" rows="4" class="w-full bg-gray-50 border border-gray-200 p-5 rounded-xl text-sm outline-none focus:border-brand transition-all"></textarea>
-                    <button class="w-full bg-brand text-white py-5 rounded-xl font-black uppercase text-xs tracking-[2px] hover:bg-[#111] transition-all shadow-lg shadow-brand/20">Send Message</button>
-                </form>
             </div>
         </div>
     </section>
 
-    <footer class="bg-[#111] text-white pt-20 pb-10 px-6 md:px-20 border-t-8 border-brand">
-        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
-            <div class="text-left">
-                <div class="text-2xl font-black italic mb-6 tracking-tighter uppercase">
-                    AL-RAB <span class="text-brand">FOUNDATION</span>
+    <section class="max-w-7xl mx-auto px-6 py-16">
+        <div class="bg-white rounded-[40px] shadow-2xl p-16 border border-gray-100/50">
+            <h2 class="text-[54px] font-black text-[#1a1a1a] mb-16">Our Focus Areas</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="category-card bg-[#fff9f4] rounded-[30px] p-10 flex flex-col items-center text-center">
+                    <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-md mb-8 border border-[#ffe4d1]">
+                        <i data-lucide="droplets" class="text-[#ff6b00] w-16 h-16"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-[#1a1a1a] mb-4">Clean Water</h3>
+                    <p class="text-gray-500 font-medium leading-relaxed">Installation of water wells to provide safe drinking water in underserved areas.</p>
                 </div>
-                <p class="text-gray-400 text-sm leading-relaxed mb-6">
-                    A humanitarian and educational NGO dedicated to serving society through Islamic values, compassion, and responsibility. We uplift underprivileged girls and support vulnerable families across Pakistan.
+
+                <div class="category-card bg-[#f0fff9] rounded-[30px] p-10 flex flex-col items-center text-center">
+                    <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-md mb-8 border border-[#c6f7e2]">
+                        <i data-lucide="stethoscope" class="text-[#10b981] w-16 h-16"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-[#1a1a1a] mb-4">Medical Aid</h3>
+                    <p class="text-gray-500 font-medium leading-relaxed">Helping deserving patients with medical treatments, medicines, and health support.</p>
+                </div>
+
+                <div class="category-card bg-[#fefce8] rounded-[30px] p-10 flex flex-col items-center text-center">
+                    <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-md mb-8 border border-[#fef08a]">
+                        <i data-lucide="utensils" class="text-[#eab308] w-16 h-16"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-[#1a1a1a] mb-4">Food Support</h3>
+                    <p class="text-gray-500 font-medium leading-relaxed">Regular ration distribution for poor families, orphans, and widows.</p>
+                </div>
+
+                <div class="category-card bg-[#eff6ff] rounded-[30px] p-10 flex flex-col items-center text-center">
+                    <div class="w-32 h-32 bg-white rounded-full flex items-center justify-center shadow-md mb-8 border border-[#bfdbfe]">
+                        <i data-lucide="book-open" class="text-[#3b82f6] w-16 h-16"></i>
+                    </div>
+                    <h3 class="text-2xl font-black text-[#1a1a1a] mb-4">Education</h3>
+                    <p class="text-gray-500 font-medium leading-relaxed">Providing quality religious and worldly education to transform lives.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="relative w-full pb-20 overflow-hidden bg-[#fdfbf2]">
+        
+        <div class="absolute top-0 left-0 w-full z-20 -translate-y-[95%]">
+            <svg viewBox="0 0 1440 120" fill="none" class="w-full h-auto block rotate-180">
+                <path d="M0 120H1440V45.5C1440 45.5 1380 30 1320 35C1260 40 1200 65 1140 60C1080 55 1020 25 960 30C900 35 840 65 780 60C720 55 660 25 600 30C540 35 480 65 420 60C360 55 300 25 240 30C180 35 120 65 60 60C0 55 0 45.5 0 45.5V120Z" fill="#fdfbf2"/>
+            </svg>
+        </div>
+
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <img src="https://csspicker.dev/api/image/?q=world+map+outline&image_type=vector" class="absolute left-0 top-0 w-2/3 h-auto grayscale">
+            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-full flex flex-col gap-4 items-end pr-4">
+                <div class="w-24 h-24 bg-orange-400 rotate-45 opacity-20"></div>
+                <div class="w-16 h-16 bg-orange-500 rotate-12 opacity-30"></div>
+                <div class="w-32 h-32 bg-[#6a1b4d] rotate-45 opacity-10"></div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-5xl md:text-6xl font-black text-[#1a1a1a] mb-4">We Empower The Vulnerable</h2>
+                <p class="text-gray-500 max-w-2xl mx-auto text-lg font-medium italic">
+                    Our focus is to improve the standard of living for the poorest people in society through dignity and care.
                 </p>
-                <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand transition duration-300"><i class="fa-brands fa-facebook-f text-sm"></i></a>
-                    <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center hover:bg-brand transition duration-300"><i class="fa-brands fa-instagram text-sm"></i></a>
+            </div>
+
+            <div class="flex flex-col lg:flex-row items-center justify-center gap-16 mb-20">
+                <div class="relative group cursor-pointer rounded-[40px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] w-full max-w-2xl border-8 border-white">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200" class="w-full h-[450px] object-cover">
+                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center">
+                        <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110">
+                            <i data-lucide="play" class="text-[#ff6b00] w-12 h-12 fill-[#ff6b00]"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hidden lg:block w-full max-w-xs relative">
+                    <img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=600" class="w-full h-auto drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]">
                 </div>
             </div>
 
-            <div class="text-left md:pl-12">
-                <h4 class="text-lg font-bold uppercase mb-6 tracking-wider">Quick Links</h4>
-                <ul class="space-y-4 text-gray-400 text-sm font-medium">
-                    <li><a href="index.html" class="hover:text-brand transition duration-300">Home</a></li>
-                    <li><a href="about.html" class="hover:text-brand transition duration-300">About Our Mission</a></li>
-                    <li><a href="#programs" class="hover:text-brand transition duration-300">Core Focus Areas</a></li>
-                    <li><a href="#solar" class="hover:text-brand transition duration-300">Solar Project</a></li>
-                    <li><a href="#contact" class="hover:text-brand transition duration-300">Contact Us</a></li>
-                </ul>
-            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto border-t border-gray-200 pt-16">
+                <div class="flex items-center gap-6">
+                    <div class="p-4 bg-blue-50 rounded-2xl">
+                        <i data-lucide="heart-handshake" class="text-blue-500 w-10 h-10"></i>
+                    </div>
+                    <div>
+                        <span class="text-4xl font-black text-[#1a1a1a] block">7+ Areas</span>
+                        <p class="text-[11px] text-gray-400 uppercase tracking-widest font-black mt-1">Sectors of active humanitarian work</p>
+                    </div>
+                </div>
 
-            <div class="text-left">
-                <h4 class="text-lg font-bold uppercase mb-6 tracking-wider">Office Details</h4>
-                <ul class="space-y-5 text-gray-400 text-sm">
-                    <li class="flex items-start gap-4">
-                        <i class="fa-solid fa-location-dot text-brand mt-1"></i>
-                        <span>Main Office, Karachi,<br>Sindh, Pakistan</span>
-                    </li>
-                    <li class="flex items-center gap-4">
-                        <i class="fa-solid fa-phone text-brand"></i>
-                        <span>+92 300 1234567</span>
-                    </li>
-                    <li class="flex items-center gap-4">
-                        <i class="fa-solid fa-envelope text-brand"></i>
-                        <span>info@alrabfoundation.org</span>
-                    </li>
-                </ul>
+                <div class="flex items-center gap-6">
+                    <div class="p-4 bg-green-50 rounded-2xl">
+                        <i data-lucide="users" class="text-green-500 w-10 h-10"></i>
+                    </div>
+                    <div>
+                        <span class="text-4xl font-black text-[#1a1a1a] block">Thousands</span>
+                        <p class="text-[11px] text-gray-400 uppercase tracking-widest font-black mt-1">Families supported with food and aid</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-6">
+                    <div class="p-4 bg-yellow-50 rounded-2xl">
+                        <i data-lucide="sun" class="text-yellow-500 w-10 h-10"></i>
+                    </div>
+                    <div>
+                        <span class="text-4xl font-black text-[#1a1a1a] block">Sustainable</span>
+                        <p class="text-[11px] text-gray-400 uppercase tracking-widest font-black mt-1">Solar energy for Mosques & Madaris</p>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div class="pt-10 border-t border-white/5 text-center">
-            <p class="text-gray-500 text-[10px] uppercase tracking-[3px] font-bold">
-                &copy; 2026 Al-Rab Foundation. All Rights Reserved. <br class="md:hidden"> 
-                <span class="hidden md:inline">|</span> Crafted with heart by 
-                <a href="#" class="text-brand hover:underline">WebNest</a>.
+    <section id="programs" class="max-w-7xl mx-auto px-6 py-20 bg-white">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-6">Our Impact Programs</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed">
+                Building a stronger Ummah through education, nutrition, and clean energy initiatives.
             </p>
         </div>
-    </footer>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <div class="group relative rounded-[30px] overflow-hidden shadow-xl h-[520px] cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
+                
+                <div class="absolute bottom-0 left-0 w-full p-8 bg-[#d4af37]/90 text-white backdrop-blur-sm transition-all duration-500 translate-y-[60px] group-hover:translate-y-0">
+                    <p class="text-xs uppercase font-bold mb-2 opacity-80">Education</p>
+                    <h3 class="text-xl font-black mb-6 leading-tight">Girls' Academic & Deeni Training</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span>Support Needed</span>
+                                <span>Monthly Goal</span>
+                            </div>
+                            <div class="w-full bg-white/30 h-2 rounded-full overflow-hidden">
+                                <div class="bg-white h-full" style="width: 65%"></div>
+                            </div>
+                        </div>
+                        <a href="#donate" class="block text-center w-full bg-white text-[#d4af37] font-black py-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">Donate Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative rounded-[30px] overflow-hidden shadow-xl h-[520px] cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1548936568-15089365688d?w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
+                
+                <div class="absolute bottom-0 left-0 w-full p-8 bg-[#9c27b0]/90 text-white backdrop-blur-sm transition-all duration-500 translate-y-[60px] group-hover:translate-y-0">
+                    <p class="text-xs uppercase font-bold mb-2 opacity-80">Infrastructure</p>
+                    <h3 class="text-xl font-black mb-6 leading-tight">Solar Energy for Mosques & Madaris</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span>Installation</span>
+                                <span>Ongoing</span>
+                            </div>
+                            <div class="w-full bg-white/30 h-2 rounded-full overflow-hidden">
+                                <div class="bg-white h-full" style="width: 45%"></div>
+                            </div>
+                        </div>
+                        <a href="#donate" class="block text-center w-full bg-white text-[#9c27b0] font-black py-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">Donate Now</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="group relative rounded-[30px] overflow-hidden shadow-xl h-[520px] cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
+                
+                <div class="absolute bottom-0 left-0 w-full p-8 bg-[#03a9f4]/90 text-white backdrop-blur-sm transition-all duration-500 translate-y-[60px] group-hover:translate-y-0">
+                    <p class="text-xs uppercase font-bold mb-2 opacity-80">Social Welfare</p>
+                    <h3 class="text-xl font-black mb-6 leading-tight">Orphan & Widow Support Program</h3>
+                    
+                    <div class="space-y-4">
+                        <div class="space-y-2">
+                            <div class="flex justify-between text-xs font-bold">
+                                <span>Relief</span>
+                                <span>Active</span>
+                            </div>
+                            <div class="w-full bg-white/30 h-2 rounded-full overflow-hidden">
+                                <div class="bg-white h-full" style="width: 25%"></div>
+                            </div>
+                        </div>
+                        <a href="#donate" class="block text-center w-full bg-white text-[#03a9f4] font-black py-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">Donate Now</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="success" class="max-w-7xl mx-auto px-6 py-20 bg-[#fdfbf2]">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-6">Stories of Transformation</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed">
+                Witness how your compassion is creating a legacy of hope and dignity in Pakistan.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            
+            <div class="bg-white rounded-[40px] p-8 shadow-xl border border-gray-100 flex flex-col items-center text-center group">
+                <div class="relative mb-8">
+                    <div class="w-48 h-48 rounded-full overflow-hidden border-8 border-[#fff9f4] shadow-inner transition-transform duration-500 group-hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=400" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-2 -right-2 bg-[#ff6b00] text-white p-3 rounded-full shadow-lg">
+                        <i data-lucide="quote" class="w-6 h-6 fill-white"></i>
+                    </div>
+                </div>
+                
+                <h3 class="text-2xl font-black text-[#1a1a1a] mb-2">A Future for Girls</h3>
+                <p class="text-[#ff6b00] font-bold text-sm uppercase tracking-widest mb-4">Education Impact</p>
+                <p class="text-gray-500 leading-relaxed italic">
+                    "Al-Rabb Foundation gave me the chance to study both Deen and modern subjects. I feel confident and ready to serve my community."
+                </p>
+            </div>
+
+            <div class="bg-white rounded-[40px] p-8 shadow-xl border border-gray-100 flex flex-col items-center text-center group">
+                <div class="relative mb-8">
+                    <div class="w-48 h-48 rounded-full overflow-hidden border-8 border-[#f0fff9] shadow-inner transition-transform duration-500 group-hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400" class="w-full h-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-2 -right-2 bg-[#10b981] text-white p-3 rounded-full shadow-lg">
+                        <i data-lucide="quote" class="w-6 h-6 fill-white"></i>
+                    </div>
+                </div>
+                
+                <h3 class="text-2xl font-black text-[#1a1a1a] mb-2">Compassion for Orphans</h3>
+                <p class="text-[#10b981] font-bold text-sm uppercase tracking-widest mb-4">Monthly Support</p>
+                <p class="text-gray-500 leading-relaxed italic">
+                    "After my father passed, we were lost. The foundation's monthly support ensured I stayed in school and my family never went hungry."
+                </p>
+            </div>
+
+            <div class="bg-white rounded-[40px] p-8 shadow-xl border border-gray-100 flex flex-col items-center text-center group">
+                <div class="relative mb-8">
+                    <div class="w-48 h-48 rounded-full overflow-hidden border-8 border-[#eff6ff] shadow-inner transition-transform duration-500 group-hover:scale-105">
+                        <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=400" class="h-full w-full object-cover">
+                    </div>
+                    <div class="absolute -bottom-2 -right-2 bg-[#3b82f6] text-white p-3 rounded-full shadow-lg">
+                        <i data-lucide="quote" class="w-6 h-6 fill-white"></i>
+                    </div>
+                </div>
+                
+                <h3 class="text-2xl font-black text-[#1a1a1a] mb-2">Health & Healing</h3>
+                <p class="text-[#3b82f6] font-bold text-sm uppercase tracking-widest mb-4">Medical Assistance</p>
+                <p class="text-gray-500 leading-relaxed italic">
+                    "When illness struck, we had no money for treatment. The foundation provided the medicines and support needed for a full recovery."
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+
+
     <script>
-        // Hero Slider (2s Pause)
-        var swiper = new Swiper(".mySwiper", {
-            loop: true,
-            autoplay: { delay: 2000, disableOnInteraction: false },
-            speed: 1000,
-            effect: 'fade',
-            fadeEffect: { crossFade: true }
-        });
-
-        // Sticky Header Logic
-        window.onscroll = function() {
-            var header = document.getElementById("main-header");
-            if (window.pageYOffset > 100) header.classList.add("sticky-active");
-            else header.classList.remove("sticky-active");
-        };
+        lucide.createIcons();
+        const slides = document.querySelectorAll('.hero-slide');
+        let currentSlide = 0;
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 6000); // Transitions every 6 seconds
     </script>
+    <footer id="footer" class="bg-[#6a1b4d] text-white pt-20 pb-10">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+                
+                <div class="space-y-6">
+                    <div class="flex items-center gap-2">
+                        <div class="w-10 h-10 bg-[#ff6b00] rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+                            <i data-lucide="heart" class="text-white w-6 h-6"></i>
+                        </div>
+                        <span class="text-2xl font-black tracking-tight">Al-Rabb<span class="text-[#ff6b00]">Foundation</span></span>
+                    </div>
+                    <p class="text-gray-300 leading-relaxed text-sm">
+                        Dedicated to serving humanity through education, dignity, and care for the vulnerable across Pakistan.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#ff6b00] transition-all">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#ff6b00] transition-all">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#ff6b00] transition-all">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-[#ff6b00] w-fit pb-1">Navigation</h4>
+                    <ul class="space-y-4 text-sm text-gray-300">
+                        <li><a href="#success" class="hover:text-[#ff6b00] transition-colors">Our Mission</a></li>
+                        <li><a href="#programs" class="hover:text-[#ff6b00] transition-colors">Girls' Education</a></li>
+                        <li><a href="#programs" class="hover:text-[#ff6b00] transition-colors">Orphan Support</a></li>
+                        <li><a href="#programs" class="hover:text-[#ff6b00] transition-colors">Ramadan Program</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-[#ff6b00] w-fit pb-1">Get In Touch</h4>
+                    <ul class="space-y-4 text-sm text-gray-300">
+                        <li class="flex items-start gap-3">
+                            <i data-lucide="map-pin" class="text-[#ff6b00] w-5 h-5 shrink-0"></i>
+                            <span>Pakistan Based NGO<br>Serving Nationally</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <i data-lucide="mail" class="text-[#ff6b00] w-5 h-5"></i>
+                            <span>info@alrabbfoundation.org</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="text-lg font-bold mb-6 border-b border-[#ff6b00] w-fit pb-1">Newsletter</h4>
+                    <p class="text-sm text-gray-300 mb-4">Join our mission to transform lives.</p>
+                    <form class="flex flex-col gap-3">
+                        <input type="email" placeholder="Your Email" class="bg-white/10 border border-white/20 rounded-full py-3 px-6 text-sm focus:outline-none focus:border-[#ff6b00]">
+                        <button class="bg-[#ff6b00] text-white font-bold py-3 rounded-full hover:bg-[#e66000] transition-all text-sm">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-white/10 pt-10 text-center text-sm text-gray-400">
+                <p>&copy; 2026 Al-Rabb Foundation. All Rights Reserved. Designed by **WebNest**.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
