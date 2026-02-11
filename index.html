@@ -94,6 +94,48 @@ a, button, .swiper-slide, .swiper-button-next, .swiper-button-prev {
 .hero-slide.active {
     background-size: 110%; /* Slowly zoom in while active */
 } 
+/* Container height and background */
+.hero-slide-container { 
+    position: relative; 
+    width: 100%; 
+    height: 700px; 
+    background: black; 
+    overflow: hidden; 
+}
+
+/* Base slide style - Stacks them with Absolute */
+.hero-slide {
+    position: absolute; 
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 10;
+    background-size: 100%;
+    background-position: center;
+    transition: opacity 1.2s ease-in-out, background-size 10s ease-out;
+}
+
+/* Active slide state */
+.hero-slide.active { 
+    opacity: 1; 
+    z-index: 20; 
+    background-size: 110%; /* Ken Burns Effect */
+}
+
+/* Internal Text Animations */
+.hero-slide h1, .hero-slide p, .hero-slide a {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hero-slide.active h1 { opacity: 1; transform: translateY(0); transition-delay: 0.4s; }
+.hero-slide.active p { opacity: 1; transform: translateY(0); transition-delay: 0.6s; }
+.hero-slide.active a { opacity: 1; transform: translateY(0); transition-delay: 0.8s; }
+
+/* UI Layering */
+.hero-nav-btn { z-index: 40; }
+.torn-paper { z-index: 30; position: absolute; bottom: 0; left: 0; line-height: 0; }
     </style>
 </head>
 <body class="bg-[#fdfbf2]">
@@ -158,81 +200,64 @@ a, button, .swiper-slide, .swiper-button-next, .swiper-button-prev {
     </div>
 </header>
 
-   <div class="relative w-full h-[650px] overflow-hidden bg-black">
+   <div class="hero-slide-container">
     <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070');">
-        <div class="absolute inset-0 bg-black/40"></div>
-        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
-            <h1 class="text-white text-5xl md:text-7xl font-bold mb-4">Empowering Girls.</h1>
-            <p class="text-white text-xl opacity-90 max-w-xl mb-8 font-medium">Providing religious and worldly education for girls to build a brighter future.</p>
-            <a href="#donate" class="bg-[#ff6b00] text-white font-bold py-4 px-10 rounded-full shadow-lg hover:scale-105 transition-transform">Donate Now</a>
-        
+        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-10 h-full flex items-center relative z-10">
+            <div class="max-w-2xl text-left">
+                <h1 class="text-white text-6xl md:text-8xl font-black leading-tight mb-4">Together we <span class="text-[#ff6b00]">educate</span> every child</h1>
+                <p class="text-white/90 text-xl md:text-2xl font-medium mb-8">Providing religious and worldly education for girls to build a brighter future.</p>
+                <a href="#donate" class="inline-block bg-[#ff6b00] text-white font-bold py-4 px-12 rounded-full shadow-xl hover:scale-105 transition-transform text-lg">Donate Now</a>
+            </div>
         </div>
-        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
-    <i data-lucide="chevron-left" class="w-8 h-8"></i>
-</button>
-<button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
-    <i data-lucide="chevron-right" class="w-8 h-8"></i>
-</button>
+    </div>
+
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1542810634-71277d95dcbb?q=80&w=2070');">
+        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-10 h-full flex items-center relative z-10">
+            <div class="max-w-2xl text-left">
+                <h1 class="text-white text-6xl md:text-8xl font-black leading-tight mb-4">Hope for <span class="text-[#ff6b00]">Orphans</span></h1>
+                <p class="text-white/90 text-xl md:text-2xl font-medium mb-8">Giving every child the love, care, and education they deserve to thrive.</p>
+                <a href="#donate" class="inline-block bg-[#ff6b00] text-white font-bold py-4 px-12 rounded-full shadow-xl hover:scale-105 transition-transform text-lg">Sponsor a Child</a>
+            </div>
+        </div>
     </div>
 
     <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2070');">
-        <div class="absolute inset-0 bg-black/40"></div>
-        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
-            <h1 class="text-white text-5xl md:text-7xl font-bold mb-4">Transforming Lives</h1>
-            <p class="text-white text-xl opacity-90 max-w-xl mb-8 font-medium">Bridging the gap between modern science and spiritual values.</p>
-            <a href="#programs" class="bg-[#ff6b00] text-white font-bold py-4 px-10 rounded-full shadow-lg hover:scale-105 transition-transform">Explore Programs</a>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-10 h-full flex items-center relative z-10">
+            <div class="max-w-2xl text-left">
+                <h1 class="text-white text-6xl md:text-8xl font-black leading-tight mb-4">Transforming <span class="text-[#ff6b00]">Lives</span> Daily</h1>
+                <p class="text-white/90 text-xl md:text-2xl font-medium mb-8">Bridging the gap between modern science and spiritual values.</p>
+                <a href="#programs" class="inline-block bg-[#ff6b00] text-white font-bold py-4 px-12 rounded-full shadow-xl hover:scale-105 transition-transform text-lg">Explore Programs</a>
+            </div>
         </div>
-        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
-    <i data-lucide="chevron-left" class="w-8 h-8"></i>
-</button>
-<button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
-    <i data-lucide="chevron-right" class="w-8 h-8"></i>
-</button>
     </div>
 
     <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=2070');">
-        <div class="absolute inset-0 bg-black/50"></div>
-        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
-            <h1 class="text-white text-5xl md:text-7xl font-bold mb-4">Supporting Orphans</h1>
-            <p class="text-white text-xl opacity-90 max-w-xl mb-8 font-medium">Giving every child the love, care, and education they deserve to thrive in society.</p>
-            <a href="#donate" class="bg-[#ff6b00] text-white font-bold py-4 px-10 rounded-full shadow-lg hover:scale-105 transition-transform">Sponsor a Child</a>
+        <div class="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-10 h-full flex items-center relative z-10">
+            <div class="max-w-2xl text-left">
+                <h1 class="text-white text-6xl md:text-8xl font-black leading-tight mb-4">Serving <span class="text-[#ff6b00]">Humanity</span></h1>
+                <p class="text-white/90 text-xl md:text-2xl font-medium mb-8">From clean water to medical aid, we reach those in most need.</p>
+                <a href="#footer" class="inline-block bg-[#ff6b00] text-white font-bold py-4 px-12 rounded-full shadow-xl hover:scale-105 transition-transform text-lg">Get Involved</a>
+            </div>
         </div>
-        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
-    <i data-lucide="chevron-left" class="w-8 h-8"></i>
-</button>
-<button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
-    <i data-lucide="chevron-right" class="w-8 h-8"></i>
-</button>
     </div>
 
-    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&q=80&w=2070');">
-        <div class="absolute inset-0 bg-black/50"></div>
-        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
-            <h1 class="text-white text-5xl md:text-7xl font-bold mb-4">Serving Humanity</h1>
-            <p class="text-white text-xl opacity-90 max-w-xl mb-8 font-medium">From clean water to medical aid, we are reaching those in most need across Pakistan.</p>
-            <a href="#footer" class="bg-[#ff6b00] text-white font-bold py-4 px-10 rounded-full shadow-lg hover:scale-105 transition-transform">Get Involved</a>
-        </div>
-        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
-    <i data-lucide="chevron-left" class="w-8 h-8"></i>
-</button>
-<button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
-    <i data-lucide="chevron-right" class="w-8 h-8"></i>
-</button>
-    </div>
+    <button onclick="prevSlide()" class="hero-nav-btn absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
+        <i data-lucide="chevron-left" class="w-8 h-8"></i>
+    </button>
+    <button onclick="nextSlide()" class="hero-nav-btn absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
+        <i data-lucide="chevron-right" class="w-8 h-8"></i>
+    </button>
 
-    <div class="absolute bottom-0 left-0 w-full z-20">
-        <svg viewBox="0 0 1440 120" fill="none" class="w-full h-auto block transform translate-y-1">
-            <path d="M0 120H1440V45.5C1440 45.5 1380 30 1320 35C1260 40 1200 65 1140 60C1080 55 1020 25 960 30C900 35 840 65 780 60C720 55 660 25 600 30C540 35 480 65 420 60C360 55 300 25 240 30C180 35 120 65 60 60C0 55 0 45.5 0 45.5V120Z" fill="#fdfbf2"/>
+    <div class="torn-paper w-full">
+        <svg viewBox="0 0 1440 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-auto">
+            <path d="M0 100H1440V40C1380 45 1300 60 1200 55C1100 50 1050 20 950 25C850 30 800 65 700 60C600 55 500 25 400 30C300 35 150 70 0 40V100Z" fill="#fdfbf2"/>
         </svg>
     </div>
 </div>
-
-        <div class="absolute bottom-0 left-0 w-full z-20">
-            <svg viewBox="0 0 1440 120" fill="none" class="w-full h-auto block transform translate-y-1">
-                <path d="M0 120H1440V45.5C1440 45.5 1380 30 1320 35C1260 40 1200 65 1140 60C1080 55 1020 25 960 30C900 35 840 65 780 60C720 55 660 25 600 30C540 35 480 65 420 60C360 55 300 25 240 30C180 35 120 65 60 60C0 55 0 45.5 0 45.5V120Z" fill="#fdfbf2"/>
-            </svg>
-        </div>
-    </div>
 
     <section id="donate" data-aos="fade-up" class="max-w-7xl mx-auto px-6 py-12">
         <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
@@ -592,6 +617,7 @@ interactables.forEach(el => {
         outline.classList.remove('cursor-grow');
     });
 });
+
 </script>
    <footer id="footer" class="bg-[#6a1b4d] text-white pt-20 pb-10">
     <div class="max-w-7xl mx-auto px-6">
