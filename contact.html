@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Al-Rab Foundation</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        
+        /* Magnetic Cursor */
+        html, body { cursor: none; }
+        a, button, input, textarea { cursor: none; }
+        .cursor-grow { transform: scale(2.5); background-color: rgba(106, 27, 77, 0.1) !important; border-color: #ff6b00 !important; }
+
+        /* Contact Hero Background Zoom */
+        .contact-hero-bg {
+            background: linear-gradient(to right, #3e447a 40%, transparent 100%), 
+                        url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070');
+            background-size: cover;
+            background-position: center;
+            animation: slowZoom 20s infinite alternate;
+        }
+        @keyframes slowZoom { from { transform: scale(1); } to { transform: scale(1.1); } }
+    </style>
+</head>
+<body class="bg-[#fdfbf2]">
+
+    <div id="cursor-dot" class="fixed w-2 h-2 bg-[#ff6b00] rounded-full pointer-events-none z-[999] transition-transform duration-100 ease-out"></div>
+    <div id="cursor-outline" class="fixed w-8 h-8 border-2 border-[#6a1b4d] rounded-full pointer-events-none z-[998] transition-all duration-300 ease-out"></div>
+
+    <header class="w-full bg-white shadow-sm sticky top-0 z-50">
+        <div class="bg-[#6a1b4d] text-white py-2.5 px-4 md:px-8">
+            <div class="max-w-7xl mx-auto flex justify-between items-center text-[13px]">
+                <div class="flex gap-6">
+                    <div class="flex items-center gap-2"><i data-lucide="map-pin" class="text-[#ff6b00] w-4 h-4"></i><span>Pakistan Based NGO</span></div>
+                    <div class="flex items-center gap-2"><i data-lucide="mail" class="text-[#ff6b00] w-4 h-4"></i><span>info@alrabbfoundation.org</span></div>
+                </div>
+                <div class="flex gap-3">
+                    <i data-lucide="facebook" class="w-4 h-4 cursor-pointer hover:text-[#ff6b00]"></i>
+                    <i data-lucide="instagram" class="w-4 h-4 cursor-pointer hover:text-[#ff6b00]"></i>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-20">
+            <div class="flex items-center">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img src="Logo-01.png" alt="Logo" class="h-12 w-auto object-contain" />
+                    <span class="text-2xl font-black text-[#1a1a1a] hidden sm:block">Al Rab<span class="text-[#ff6b00]">Foundation</span></span>
+                </a>
+            </div>
+            <nav class="hidden lg:flex items-center gap-8 font-semibold text-[#444444]">
+                <a href="index.html" class="hover:text-[#ff6b00]">Home</a>
+                <a href="about.html" class="hover:text-[#ff6b00]">Who We Are</a>
+                <a href="index.html#programs" class="hover:text-[#ff6b00]">Our Programs</a>
+                <a href="contact.html" class="text-[#ff6b00]">Contact Us</a>
+            </nav>
+            <a href="index.html#donate" class="bg-[#ff6b00] text-white font-bold py-2.5 px-6 rounded-full shadow-md hover:bg-[#e66000] transition-all">Donate Now</a>
+        </div>
+    </header>
+
+    <section class="relative h-[450px] flex items-center overflow-hidden bg-black">
+        <div class="absolute inset-0 contact-hero-bg opacity-60"></div>
+        <div class="max-w-7xl mx-auto px-10 w-full relative z-10">
+            <h1 class="text-white text-6xl md:text-8xl font-black tracking-tighter flex flex-wrap gap-x-4">
+                <span data-aos="fade-up" data-aos-delay="100">Contact</span>
+                <span class="text-[#ff6b00] flex">
+                    <span data-aos="fade-up" data-aos-delay="300">U</span>
+                    <span data-aos="fade-up" data-aos-delay="400">s</span>
+                    <span data-aos="fade-up" data-aos-delay="500">.</span>
+                </span>
+            </h1>
+            <div class="flex items-center gap-4 mt-8 bg-white/5 backdrop-blur-md w-fit px-6 py-3 rounded-2xl border border-white/10" data-aos="fade-up" data-aos-delay="700">
+                <a href="index.html" class="text-white/70 hover:text-[#ff6b00] font-bold text-sm">Home</a>
+                <span class="text-white/20">/</span>
+                <span class="text-[#ffb380] font-bold text-sm">Get in Touch</span>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 w-full leading-[0] z-20">
+            <svg viewBox="0 0 1440 100" fill="none" class="w-full h-auto">
+                <path d="M0 100H1440V40C1380 45 1300 60 1200 55C1100 50 1050 20 950 25C850 30 800 65 700 60C600 55 500 25 400 30C300 35 150 70 0 40V100Z" fill="#fdfbf2"/>
+            </svg>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-16">
+            
+            <div data-aos="fade-right">
+                <p class="text-[#ff6b00] font-black uppercase tracking-[0.3em] text-xs mb-4">Reach Out</p>
+                <h2 class="text-5xl font-black text-[#1a1a1a] leading-tight mb-8">
+                    Let's start a <br><span class="text-[#3e447a]">conversation</span> for good.
+                </h2>
+                
+                <div class="space-y-8 mt-12">
+                    <div class="flex items-start gap-6 group">
+                        <div class="w-14 h-14 bg-white rounded-2xl shadow-xl flex items-center justify-center border border-gray-100 group-hover:bg-[#ff6b00] transition-all duration-500">
+                            <i data-lucide="mail" class="text-[#ff6b00] group-hover:text-white"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black uppercase text-gray-400 tracking-widest mb-1">Email Support</p>
+                            <p class="text-xl font-bold text-[#1a1a1a]">info@alrabbfoundation.org</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-6 group">
+                        <div class="w-14 h-14 bg-white rounded-2xl shadow-xl flex items-center justify-center border border-gray-100 group-hover:bg-[#3e447a] transition-all duration-500">
+                            <i data-lucide="phone" class="text-[#3e447a] group-hover:text-white"></i>
+                        </div>
+                        <div>
+                            <p class="text-[10px] font-black uppercase text-gray-400 tracking-widest mb-1">Call Us Directly</p>
+                            <p class="text-xl font-bold text-[#1a1a1a]">+92 331 0000855</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-10 rounded-[40px] shadow-2xl border border-gray-100" data-aos="fade-left">
+                <form class="space-y-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase text-gray-400 tracking-widest">Full Name</label>
+                            <input type="text" placeholder="Enter name" class="w-full bg-gray-50 border-none rounded-2xl p-4 focus:ring-2 focus:ring-[#ff6b00]/20 outline-none">
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-[10px] font-black uppercase text-gray-400 tracking-widest">Email</label>
+                            <input type="email" placeholder="Enter email" class="w-full bg-gray-50 border-none rounded-2xl p-4 focus:ring-2 focus:ring-[#ff6b00]/20 outline-none">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black uppercase text-gray-400 tracking-widest">Subject</label>
+                        <select class="w-full bg-gray-50 border-none rounded-2xl p-4 outline-none appearance-none">
+                            <option>Donation Inquiry</option>
+                            <option>Volunteering</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-[10px] font-black uppercase text-gray-400 tracking-widest">Message</label>
+                        <textarea rows="4" placeholder="How can we help?" class="w-full bg-gray-50 border-none rounded-2xl p-4 outline-none focus:ring-2 focus:ring-[#ff6b00]/20"></textarea>
+                    </div>
+                    <button class="w-full bg-[#ff6b00] text-white font-black py-5 rounded-2xl shadow-xl hover:scale-[1.02] transition-all flex items-center justify-center gap-3">
+                        Send Message <i data-lucide="send" class="w-5 h-5"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+   <footer id="footer" class="bg-[#6a1b4d] text-white pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            
+            <div class="space-y-6">
+                <div class="flex items-center gap-3">
+                    <div class="bg-white p-1 rounded-lg shadow-sm">
+                        <img src="Logo-01.png" alt="Al-Rab Logo" class="h-10 w-auto object-contain">
+                    </div>
+                    <span class="text-2xl font-black tracking-tight leading-none">
+                        Al Rab<span class="text-[#ff6b00]">Foundation</span>
+                    </span>
+                </div>
+                <p class="text-gray-300 leading-relaxed text-sm">
+                    Helping communities thrive by providing aid, clean water, and quality education across Pakistan.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#ff6b00] transition-all"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#ff6b00] transition-all"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#ff6b00] transition-all"><i data-lucide="twitter" class="w-4 h-4"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-[#ff6b00] transition-all"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-bold mb-6 border-b border-[#ff6b00] w-fit pb-1">Quick Links</h4>
+                <ul class="space-y-4 text-sm text-gray-300">
+                    <li><a href="about.html" class="hover:text-[#ff6b00] transition-colors">About Our Charity</a></li>
+                    <li><a href="index.html#programs" class="hover:text-[#ff6b00] transition-colors">Recent Causes</a></li>
+                    <li><a href="#" class="hover:text-[#ff6b00] transition-colors">Volunteer with Us</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-bold mb-6 border-b border-[#ff6b00] w-fit pb-1">Get In Touch</h4>
+                <ul class="space-y-4 text-sm text-gray-300">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="map-pin" class="text-[#ff6b00] w-5 h-5 shrink-0"></i>
+                        <span>Pakistan Based NGO Serving Nationally</span>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i data-lucide="phone" class="text-[#ff6b00] w-5 h-5 shrink-0"></i>
+                        <a href="tel:+923310000855" class="hover:text-[#ff6b00]">+92 331 0000855</a>
+                    </li>
+                    <li class="flex items-center gap-3">
+                        <i data-lucide="mail" class="text-[#ff6b00] w-5 h-5 shrink-0"></i>
+                        <a href="mailto:info@alrabbfoundation.org" class="hover:text-[#ff6b00]">info@alrabbfoundation.org</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-lg font-bold mb-6 border-b border-[#ff6b00] w-fit pb-1">Newsletter</h4>
+                <p class="text-sm text-gray-300 mb-4">Subscribe to get latest updates.</p>
+                <form class="flex flex-col gap-3">
+                    <input type="email" placeholder="Your Email" class="bg-white/10 border border-white/20 rounded-full py-3 px-6 text-sm text-white focus:outline-none focus:border-[#ff6b00]">
+                    <button type="button" class="bg-[#ff6b00] text-white font-bold py-3 rounded-full hover:bg-[#e66000] text-sm transition-colors">Subscribe</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="border-t border-white/10 pt-10 text-center text-sm text-gray-400">
+            <p>&copy; 2026 Al Rab Foundation. Developed by WebNest.</p>
+        </div>
+    </div>
+</footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        lucide.createIcons();
+
+        // Cursor Logic
+        const dot = document.getElementById('cursor-dot');
+        const outline = document.getElementById('cursor-outline');
+        window.addEventListener('mousemove', (e) => {
+            dot.style.left = `${e.clientX}px`; dot.style.top = `${e.clientY}px`;
+            outline.animate({ left: `${e.clientX}px`, top: `${e.clientY}px` }, { duration: 500, fill: "forwards" });
+        });
+        document.querySelectorAll('a, button, input, textarea, select').forEach(el => {
+            el.addEventListener('mouseenter', () => outline.classList.add('cursor-grow'));
+            el.addEventListener('mouseleave', () => outline.classList.remove('cursor-grow'));
+        });
+    </script>
+</body>
+</html>
