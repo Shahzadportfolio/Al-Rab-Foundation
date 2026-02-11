@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Al-Rab Foundation - Empowering Girls & Supporting Humanity</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+    body { font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+
+    .about-hero {
+        background: linear-gradient(to right, #3e447a 45%, transparent 100%), 
+                    url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070');
+        /* ... more hero styles ... */
+    }
+    /* Tab transitions */
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.5s ease-in-out; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    /* Hide default cursor on the whole site */
+html, body {
+    cursor: none;
+}
+
+/* Ensure links and buttons still show they are clickable */
+a, button, .swiper-slide, .swiper-button-next, .swiper-button-prev {
+    cursor: none;
+}
+
+/* Class to grow the cursor when hovering over the logo or buttons */
+.cursor-grow {
+    transform: scale(2.5);
+    background-color: rgba(106, 27, 77, 0.1) !important;
+    border-color: #ff6b00 !important;
+}
+</style>
+
+    <style>
+        
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
         body { font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
 
@@ -24,10 +57,59 @@
         /* Smooth Category Card Hover */
         .category-card { transition: all 0.3s ease; }
         .category-card:hover { transform: translateY(-8px); }
+        /* --- HERO TEXT ANIMATION --- */
+/* This hides the text by default and moves it down 30px */
+.hero-slide h1, 
+.hero-slide p, 
+.hero-slide a {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* This triggers when the slide becomes 'active' */
+.hero-slide.active h1 {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.4s;
+}
+
+.hero-slide.active p {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.6s;
+}
+
+.hero-slide.active a {
+    opacity: 1;
+    transform: translateY(0);
+    transition-delay: 0.8s;
+}
+       /* Ken Burns Zoom Effect */
+.hero-slide {
+    background-size: 100%; /* Start small */
+    transition: opacity 1.2s ease-in-out, background-size 6s ease-out;
+}
+
+.hero-slide.active {
+    background-size: 110%; /* Slowly zoom in while active */
+} 
     </style>
 </head>
 <body class="bg-[#fdfbf2]">
-
+    <div id="cursor-dot" class="fixed w-2 h-2 bg-[#ff6b00] rounded-full pointer-events-none z-[999] transition-transform duration-100 ease-out"></div>
+<div id="cursor-outline" class="fixed w-8 h-8 border-2 border-[#6a1b4d] rounded-full pointer-events-none z-[998] transition-all duration-300 ease-out"></div>
+<div id="preloader" class="fixed inset-0 z-[100] flex items-center justify-center bg-white transition-opacity duration-700">
+    <div class="relative flex flex-col items-center">
+        <div class="animate-pulse">
+            <img src="Logo-01.png" alt="Al-Rab Logo" class="h-24 w-auto object-contain">
+        </div>
+        
+        <div class="w-32 h-1 bg-gray-100 rounded-full mt-6 overflow-hidden">
+            <div class="h-full bg-[#ff6b00] animate-[loading_1.5s_ease-in-out_infinite]"></div>
+        </div>
+    </div>
+</div>
     <header class="w-full bg-white shadow-sm sticky top-0 z-50">
     <div class="bg-[#6a1b4d] text-white py-2.5 px-4 md:px-8">
         <div class="max-w-7xl mx-auto flex justify-between items-center text-[13px]">
@@ -76,22 +158,74 @@
     </div>
 </header>
 
-    <div class="relative w-full h-[650px] overflow-hidden bg-black">
-        <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070');">
-            <div class="absolute inset-0 bg-black/40"></div>
-            <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
-                <h1 class="text-white text-5xl md:text-7xl font-bold mb-4">Empowering Girls. Supporting Orphans. Serving Humanity.</h1>
-                <p class="text-white text-xl opacity-90 max-w-xl mb-8 font-medium">Providing religious and worldly education for girls while extending compassionate support to orphans and vulnerable families in Pakistan.</p>
-                <a href="#donate" class="bg-[#ff6b00] text-white font-bold py-4 px-10 rounded-full shadow-lg hover:scale-105 transition-transform">Donate Now</a>
-            </div>
+   <div class="relative w-full h-[650px] overflow-hidden bg-black">
+    <div class="hero-slide active" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070');">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
+            <h1 class="text-white text-5xl md:text-7xl font-bold mb-4">Empowering Girls.</h1>
+            <p class="text-white text-xl opacity-90 max-w-xl mb-8 font-medium">Providing religious and worldly education for girls to build a brighter future.</p>
+            <a href="#donate" class="bg-[#ff6b00] text-white font-bold py-4 px-10 rounded-full shadow-lg hover:scale-105 transition-transform">Donate Now</a>
+        
         </div>
-        <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2070');">
-            <div class="absolute inset-0 bg-black/40"></div>
-            <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
-                <h1 class="text-white text-5xl md:text-7xl font-bold mb-4">Transforming Lives Through Education</h1>
-                <a href="#programs" class="bg-[#ff6b00] text-white font-bold py-4 px-10 rounded-full shadow-lg hover:scale-105 transition-transform">Explore Programs</a>
-            </div>
+        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
+    <i data-lucide="chevron-left" class="w-8 h-8"></i>
+</button>
+<button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
+    <i data-lucide="chevron-right" class="w-8 h-8"></i>
+</button>
+    </div>
+
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=2070');">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
+            <h1 class="text-white text-5xl md:text-7xl font-bold mb-4">Transforming Lives</h1>
+            <p class="text-white text-xl opacity-90 max-w-xl mb-8 font-medium">Bridging the gap between modern science and spiritual values.</p>
+            <a href="#programs" class="bg-[#ff6b00] text-white font-bold py-4 px-10 rounded-full shadow-lg hover:scale-105 transition-transform">Explore Programs</a>
         </div>
+        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
+    <i data-lucide="chevron-left" class="w-8 h-8"></i>
+</button>
+<button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
+    <i data-lucide="chevron-right" class="w-8 h-8"></i>
+</button>
+    </div>
+
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?auto=format&fit=crop&q=80&w=2070');">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
+            <h1 class="text-white text-5xl md:text-7xl font-bold mb-4">Supporting Orphans</h1>
+            <p class="text-white text-xl opacity-90 max-w-xl mb-8 font-medium">Giving every child the love, care, and education they deserve to thrive in society.</p>
+            <a href="#donate" class="bg-[#ff6b00] text-white font-bold py-4 px-10 rounded-full shadow-lg hover:scale-105 transition-transform">Sponsor a Child</a>
+        </div>
+        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
+    <i data-lucide="chevron-left" class="w-8 h-8"></i>
+</button>
+<button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
+    <i data-lucide="chevron-right" class="w-8 h-8"></i>
+</button>
+    </div>
+
+    <div class="hero-slide" style="background-image: url('https://images.unsplash.com/photo-1542810634-71277d95dcbb?auto=format&fit=crop&q=80&w=2070');">
+        <div class="absolute inset-0 bg-black/50"></div>
+        <div class="relative z-10 h-full flex flex-col justify-center items-center text-center px-6">
+            <h1 class="text-white text-5xl md:text-7xl font-bold mb-4">Serving Humanity</h1>
+            <p class="text-white text-xl opacity-90 max-w-xl mb-8 font-medium">From clean water to medical aid, we are reaching those in most need across Pakistan.</p>
+            <a href="#footer" class="bg-[#ff6b00] text-white font-bold py-4 px-10 rounded-full shadow-lg hover:scale-105 transition-transform">Get Involved</a>
+        </div>
+        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
+    <i data-lucide="chevron-left" class="w-8 h-8"></i>
+</button>
+<button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-white/10 hover:bg-white/30 text-white p-3 rounded-full backdrop-blur-sm transition-all">
+    <i data-lucide="chevron-right" class="w-8 h-8"></i>
+</button>
+    </div>
+
+    <div class="absolute bottom-0 left-0 w-full z-20">
+        <svg viewBox="0 0 1440 120" fill="none" class="w-full h-auto block transform translate-y-1">
+            <path d="M0 120H1440V45.5C1440 45.5 1380 30 1320 35C1260 40 1200 65 1140 60C1080 55 1020 25 960 30C900 35 840 65 780 60C720 55 660 25 600 30C540 35 480 65 420 60C360 55 300 25 240 30C180 35 120 65 60 60C0 55 0 45.5 0 45.5V120Z" fill="#fdfbf2"/>
+        </svg>
+    </div>
+</div>
 
         <div class="absolute bottom-0 left-0 w-full z-20">
             <svg viewBox="0 0 1440 120" fill="none" class="w-full h-auto block transform translate-y-1">
@@ -100,7 +234,7 @@
         </div>
     </div>
 
-    <section id="donate" class="max-w-7xl mx-auto px-6 py-12">
+    <section id="donate" data-aos="fade-up" class="max-w-7xl mx-auto px-6 py-12">
         <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
             <div class="max-w-md">
                 <h2 class="text-[54px] leading-tight font-black text-[#1a1a1a] mb-2">Support Our Work</h2>
@@ -126,13 +260,15 @@
         </div>
     </section>
 
-   <section class="max-w-7xl mx-auto px-6 py-16">
+  <section class="max-w-7xl mx-auto px-6 py-16">
     <div class="bg-white rounded-[40px] shadow-2xl p-8 md:p-16 border border-gray-100/50">
-        <h2 class="text-[40px] md:text-[54px] font-black text-[#1a1a1a] mb-12 text-center lg:text-left">Our Focus Areas</h2>
+        <h2 data-aos="fade-down" class="text-[40px] md:text-[54px] font-black text-[#1a1a1a] mb-12 text-center lg:text-left">
+            Our Focus Areas
+        </h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             
-            <div class="category-card bg-[#fff9f4] rounded-[30px] p-8 flex flex-col items-center text-center h-full border border-transparent hover:border-[#ffe4d1]">
+            <div data-aos="zoom-in" data-aos-delay="100" class="category-card bg-[#fff9f4] rounded-[30px] p-8 flex flex-col items-center text-center h-full border border-transparent hover:border-[#ffe4d1]">
                 <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center shadow-md mb-6 border border-[#ffe4d1] shrink-0">
                     <i data-lucide="droplets" class="text-[#ff6b00] w-10 h-10 md:w-16 md:h-16"></i>
                 </div>
@@ -140,7 +276,7 @@
                 <p class="text-gray-500 font-medium leading-relaxed text-sm md:text-base">Installation of water wells to provide safe drinking water in underserved areas.</p>
             </div>
 
-            <div class="category-card bg-[#f0fff9] rounded-[30px] p-8 flex flex-col items-center text-center h-full border border-transparent hover:border-[#c6f7e2]">
+            <div data-aos="zoom-in" data-aos-delay="200" class="category-card bg-[#f0fff9] rounded-[30px] p-8 flex flex-col items-center text-center h-full border border-transparent hover:border-[#c6f7e2]">
                 <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center shadow-md mb-6 border border-[#c6f7e2] shrink-0">
                     <i data-lucide="stethoscope" class="text-[#10b981] w-10 h-10 md:w-16 md:h-16"></i>
                 </div>
@@ -148,7 +284,7 @@
                 <p class="text-gray-500 font-medium leading-relaxed text-sm md:text-base">Helping deserving patients with medical treatments, medicines, and health support.</p>
             </div>
 
-            <div class="category-card bg-[#fefce8] rounded-[30px] p-8 flex flex-col items-center text-center h-full border border-transparent hover:border-[#fef08a]">
+            <div data-aos="zoom-in" data-aos-delay="300" class="category-card bg-[#fefce8] rounded-[30px] p-8 flex flex-col items-center text-center h-full border border-transparent hover:border-[#fef08a]">
                 <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center shadow-md mb-6 border border-[#fef08a] shrink-0">
                     <i data-lucide="utensils" class="text-[#eab308] w-10 h-10 md:w-16 md:h-16"></i>
                 </div>
@@ -156,7 +292,7 @@
                 <p class="text-gray-500 font-medium leading-relaxed text-sm md:text-base">Regular ration distribution for poor families, orphans, and widows.</p>
             </div>
 
-            <div class="category-card bg-[#eff6ff] rounded-[30px] p-8 flex flex-col items-center text-center h-full border border-transparent hover:border-[#bfdbfe]">
+            <div data-aos="zoom-in" data-aos-delay="400" class="category-card bg-[#eff6ff] rounded-[30px] p-8 flex flex-col items-center text-center h-full border border-transparent hover:border-[#bfdbfe]">
                 <div class="w-24 h-24 md:w-32 md:h-32 bg-white rounded-full flex items-center justify-center shadow-md mb-6 border border-[#bfdbfe] shrink-0">
                     <i data-lucide="book-open" class="text-[#3b82f6] w-10 h-10 md:w-16 md:h-16"></i>
                 </div>
@@ -169,228 +305,244 @@
 </section>
 
     <section class="relative w-full pb-20 overflow-hidden bg-[#fdfbf2]">
-        
-        <div class="absolute top-0 left-0 w-full z-20 -translate-y-[95%]">
-            <svg viewBox="0 0 1440 120" fill="none" class="w-full h-auto block rotate-180">
-                <path d="M0 120H1440V45.5C1440 45.5 1380 30 1320 35C1260 40 1200 65 1140 60C1080 55 1020 25 960 30C900 35 840 65 780 60C720 55 660 25 600 30C540 35 480 65 420 60C360 55 300 25 240 30C180 35 120 65 60 60C0 55 0 45.5 0 45.5V120Z" fill="#fdfbf2"/>
-            </svg>
+    <div class="absolute top-0 left-0 w-full z-20 -translate-y-[95%]">
+        <svg viewBox="0 0 1440 120" fill="none" class="w-full h-auto block rotate-180">
+            <path d="M0 120H1440V45.5C1440 45.5 1380 30 1320 35C1260 40 1200 65 1140 60C1080 55 1020 25 960 30C900 35 840 65 780 60C720 55 660 25 600 30C540 35 480 65 420 60C360 55 300 25 240 30C180 35 120 65 60 60C0 55 0 45.5 0 45.5V120Z" fill="#fdfbf2"/>
+        </svg>
+    </div>
+
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+        <img src="https://csspicker.dev/api/image/?q=world+map+outline&image_type=vector" class="absolute left-0 top-0 w-2/3 h-auto grayscale">
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-full flex flex-col gap-4 items-end pr-4">
+            <div class="w-24 h-24 bg-orange-400 rotate-45 opacity-20"></div>
+            <div class="w-16 h-16 bg-orange-500 rotate-12 opacity-30"></div>
+            <div class="w-32 h-32 bg-[#6a1b4d] rotate-45 opacity-10"></div>
+        </div>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10">
+        <div class="text-center mb-16" data-aos="fade-down">
+            <h2 class="text-5xl md:text-6xl font-black text-[#1a1a1a] mb-4">We Empower The Vulnerable</h2>
+            <p class="text-gray-500 max-w-2xl mx-auto text-lg font-medium italic">
+                Our focus is to improve the standard of living for the poorest people in society through dignity and care.
+            </p>
         </div>
 
-        <div class="absolute inset-0 opacity-10 pointer-events-none">
-            <img src="https://csspicker.dev/api/image/?q=world+map+outline&image_type=vector" class="absolute left-0 top-0 w-2/3 h-auto grayscale">
-            <div class="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-full flex flex-col gap-4 items-end pr-4">
-                <div class="w-24 h-24 bg-orange-400 rotate-45 opacity-20"></div>
-                <div class="w-16 h-16 bg-orange-500 rotate-12 opacity-30"></div>
-                <div class="w-32 h-32 bg-[#6a1b4d] rotate-45 opacity-10"></div>
+        <div class="flex flex-col lg:flex-row items-center justify-center gap-16 mb-20">
+            <div data-aos="zoom-in" data-aos-delay="200" class="relative group cursor-pointer rounded-[40px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] w-full max-w-2xl border-8 border-white">
+                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200" class="w-full h-[450px] object-cover">
+                <div class="absolute inset-0 bg-black/10 flex items-center justify-center">
+                    <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110">
+                        <i data-lucide="play" class="text-[#ff6b00] w-12 h-12 fill-[#ff6b00]"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div data-aos="fade-left" data-aos-delay="400" class="hidden lg:block w-full max-w-xs relative">
+                <img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=600" class="w-full h-auto drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]">
             </div>
         </div>
 
-        <div class="max-w-7xl mx-auto px-6 relative z-10">
-            <div class="text-center mb-16">
-                <h2 class="text-5xl md:text-6xl font-black text-[#1a1a1a] mb-4">We Empower The Vulnerable</h2>
-                <p class="text-gray-500 max-w-2xl mx-auto text-lg font-medium italic">
-                    Our focus is to improve the standard of living for the poorest people in society through dignity and care.
-                </p>
-            </div>
-
-            <div class="flex flex-col lg:flex-row items-center justify-center gap-16 mb-20">
-                <div class="relative group cursor-pointer rounded-[40px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.2)] w-full max-w-2xl border-8 border-white">
-                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=1200" class="w-full h-[450px] object-cover">
-                    <div class="absolute inset-0 bg-black/10 flex items-center justify-center">
-                        <div class="w-24 h-24 bg-white rounded-full flex items-center justify-center shadow-2xl transition-transform group-hover:scale-110">
-                            <i data-lucide="play" class="text-[#ff6b00] w-12 h-12 fill-[#ff6b00]"></i>
-                        </div>
-                    </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto border-t border-gray-200 pt-16">
+            <div class="flex items-center gap-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="p-4 bg-blue-50 rounded-2xl">
+                    <i data-lucide="heart-handshake" class="text-blue-500 w-10 h-10"></i>
                 </div>
-
-                <div class="hidden lg:block w-full max-w-xs relative">
-                    <img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=600" class="w-full h-auto drop-shadow-[0_35px_35px_rgba(0,0,0,0.25)]">
+                <div>
+                    <span class="text-4xl font-black text-[#1a1a1a] block">7+ Areas</span>
+                    <p class="text-[11px] text-gray-400 uppercase tracking-widest font-black mt-1">Sectors of active humanitarian work</p>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto border-t border-gray-200 pt-16">
-                <div class="flex items-center gap-6">
-                    <div class="p-4 bg-blue-50 rounded-2xl">
-                        <i data-lucide="heart-handshake" class="text-blue-500 w-10 h-10"></i>
-                    </div>
-                    <div>
-                        <span class="text-4xl font-black text-[#1a1a1a] block">7+ Areas</span>
-                        <p class="text-[11px] text-gray-400 uppercase tracking-widest font-black mt-1">Sectors of active humanitarian work</p>
-                    </div>
+            <div class="flex items-center gap-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="p-4 bg-green-50 rounded-2xl">
+                    <i data-lucide="users" class="text-green-500 w-10 h-10"></i>
                 </div>
-
-                <div class="flex items-center gap-6">
-                    <div class="p-4 bg-green-50 rounded-2xl">
-                        <i data-lucide="users" class="text-green-500 w-10 h-10"></i>
-                    </div>
-                    <div>
-                        <span class="text-4xl font-black text-[#1a1a1a] block">Thousands</span>
-                        <p class="text-[11px] text-gray-400 uppercase tracking-widest font-black mt-1">Families supported with food and aid</p>
-                    </div>
+                <div>
+                    <span class="text-4xl font-black text-[#1a1a1a] block">Thousands</span>
+                    <p class="text-[11px] text-gray-400 uppercase tracking-widest font-black mt-1">Families supported with food and aid</p>
                 </div>
+            </div>
 
-                <div class="flex items-center gap-6">
-                    <div class="p-4 bg-yellow-50 rounded-2xl">
-                        <i data-lucide="sun" class="text-yellow-500 w-10 h-10"></i>
-                    </div>
-                    <div>
-                        <span class="text-4xl font-black text-[#1a1a1a] block">Sustainable</span>
-                        <p class="text-[11px] text-gray-400 uppercase tracking-widest font-black mt-1">Solar energy for Mosques & Madaris</p>
-                    </div>
+            <div class="flex items-center gap-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="p-4 bg-yellow-50 rounded-2xl">
+                    <i data-lucide="sun" class="text-yellow-500 w-10 h-10"></i>
+                </div>
+                <div>
+                    <span class="text-4xl font-black text-[#1a1a1a] block">Sustainable</span>
+                    <p class="text-[11px] text-gray-400 uppercase tracking-widest font-black mt-1">Solar energy for Mosques & Madaris</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <section id="programs" class="max-w-7xl mx-auto px-6 py-20 bg-white">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-6">Our Impact Programs</h2>
-            <p class="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed">
-                Building a stronger Ummah through education, nutrition, and clean energy initiatives.
-            </p>
-        </div>
+    <div class="text-center mb-16">
+        <h2 data-aos="fade-up" class="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-6">Our Impact Programs</h2>
+        <p data-aos="fade-up" data-aos-delay="200" class="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed">
+            Building a stronger Ummah through education, nutrition, and clean energy initiatives.
+        </p>
+    </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        
+        <div class="group relative rounded-[30px] overflow-hidden shadow-xl h-[520px] cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
             
-            <div class="group relative rounded-[30px] overflow-hidden shadow-xl h-[520px] cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
+            <div data-aos="fade-right" data-aos-delay="300" class="absolute bottom-0 left-0 w-full p-8 bg-[#d4af37]/90 text-white backdrop-blur-sm transition-all duration-500 translate-y-[60px] group-hover:translate-y-0">
+                <p class="text-xs uppercase font-bold mb-2 opacity-80">Education</p>
+                <h3 class="text-xl font-black mb-6 leading-tight">Girls' Academic & Deeni Training</h3>
                 
-                <div class="absolute bottom-0 left-0 w-full p-8 bg-[#d4af37]/90 text-white backdrop-blur-sm transition-all duration-500 translate-y-[60px] group-hover:translate-y-0">
-                    <p class="text-xs uppercase font-bold mb-2 opacity-80">Education</p>
-                    <h3 class="text-xl font-black mb-6 leading-tight">Girls' Academic & Deeni Training</h3>
-                    
-                    <div class="space-y-4">
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-bold">
-                                <span>Support Needed</span>
-                                <span>Monthly Goal</span>
-                            </div>
-                            <div class="w-full bg-white/30 h-2 rounded-full overflow-hidden">
-                                <div class="bg-white h-full" style="width: 65%"></div>
-                            </div>
+                <div class="space-y-4">
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span>Support Needed</span>
+                            <span>Monthly Goal</span>
                         </div>
-                        <a href="#donate" class="block text-center w-full bg-white text-[#d4af37] font-black py-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">Donate Now</a>
+                        <div class="w-full bg-white/30 h-2 rounded-full overflow-hidden">
+                            <div class="bg-white h-full" style="width: 65%"></div>
+                        </div>
                     </div>
+                    <a href="#donate" class="block text-center w-full bg-white text-[#d4af37] font-black py-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">Donate Now</a>
                 </div>
             </div>
-
-            <div class="group relative rounded-[30px] overflow-hidden shadow-xl h-[520px] cursor-pointer">
-                <img src="images.jfif" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-                
-                <div class="absolute bottom-0 left-0 w-full p-8 bg-[#9c27b0]/90 text-white backdrop-blur-sm transition-all duration-500 translate-y-[60px] group-hover:translate-y-0">
-                    <p class="text-xs uppercase font-bold mb-2 opacity-80">Infrastructure</p>
-                    <h3 class="text-xl font-black mb-6 leading-tight">Solar Energy for Mosques & Madaris</h3>
-                    
-                    <div class="space-y-4">
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-bold">
-                                <span>Installation</span>
-                                <span>Ongoing</span>
-                            </div>
-                            <div class="w-full bg-white/30 h-2 rounded-full overflow-hidden">
-                                <div class="bg-white h-full" style="width: 45%"></div>
-                            </div>
-                        </div>
-                        <a href="#donate" class="block text-center w-full bg-white text-[#9c27b0] font-black py-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">Donate Now</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="group relative rounded-[30px] overflow-hidden shadow-xl h-[520px] cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
-                <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
-                
-                <div class="absolute bottom-0 left-0 w-full p-8 bg-[#03a9f4]/90 text-white backdrop-blur-sm transition-all duration-500 translate-y-[60px] group-hover:translate-y-0">
-                    <p class="text-xs uppercase font-bold mb-2 opacity-80">Social Welfare</p>
-                    <h3 class="text-xl font-black mb-6 leading-tight">Orphan & Widow Support Program</h3>
-                    
-                    <div class="space-y-4">
-                        <div class="space-y-2">
-                            <div class="flex justify-between text-xs font-bold">
-                                <span>Relief</span>
-                                <span>Active</span>
-                            </div>
-                            <div class="w-full bg-white/30 h-2 rounded-full overflow-hidden">
-                                <div class="bg-white h-full" style="width: 25%"></div>
-                            </div>
-                        </div>
-                        <a href="#donate" class="block text-center w-full bg-white text-[#03a9f4] font-black py-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">Donate Now</a>
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </section>
+
+        <div class="group relative rounded-[30px] overflow-hidden shadow-xl h-[520px] cursor-pointer">
+            <img src="images.jfif" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
+            
+            <div data-aos="fade-up" data-aos-delay="400" class="absolute bottom-0 left-0 w-full p-8 bg-[#9c27b0]/90 text-white backdrop-blur-sm transition-all duration-500 translate-y-[60px] group-hover:translate-y-0">
+                <p class="text-xs uppercase font-bold mb-2 opacity-80">Infrastructure</p>
+                <h3 class="text-xl font-black mb-6 leading-tight">Solar Energy for Mosques & Madaris</h3>
+                
+                <div class="space-y-4">
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span>Installation</span>
+                            <span>Ongoing</span>
+                        </div>
+                        <div class="w-full bg-white/30 h-2 rounded-full overflow-hidden">
+                            <div class="bg-white h-full" style="width: 45%"></div>
+                        </div>
+                    </div>
+                    <a href="#donate" class="block text-center w-full bg-white text-[#9c27b0] font-black py-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">Donate Now</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="group relative rounded-[30px] overflow-hidden shadow-xl h-[520px] cursor-pointer">
+            <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=600" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors"></div>
+            
+            <div data-aos="fade-left" data-aos-delay="500" class="absolute bottom-0 left-0 w-full p-8 bg-[#03a9f4]/90 text-white backdrop-blur-sm transition-all duration-500 translate-y-[60px] group-hover:translate-y-0">
+                <p class="text-xs uppercase font-bold mb-2 opacity-80">Social Welfare</p>
+                <h3 class="text-xl font-black mb-6 leading-tight">Orphan & Widow Support Program</h3>
+                
+                <div class="space-y-4">
+                    <div class="space-y-2">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span>Relief</span>
+                            <span>Active</span>
+                        </div>
+                        <div class="w-full bg-white/30 h-2 rounded-full overflow-hidden">
+                            <div class="bg-white h-full" style="width: 25%"></div>
+                        </div>
+                    </div>
+                    <a href="#donate" class="block text-center w-full bg-white text-[#03a9f4] font-black py-3 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500">Donate Now</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
 
     <section id="success" class="max-w-7xl mx-auto px-6 py-20 bg-[#fdfbf2]">
-        <div class="text-center mb-16">
-            <h2 class="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-6">Stories of Transformation</h2>
-            <p class="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed">
-                Witness how your compassion is creating a legacy of hope and dignity in Pakistan.
+    <div class="text-center mb-16" data-aos="fade-up">
+        <h2 class="text-4xl md:text-5xl font-black text-[#1a1a1a] mb-6">Stories of Transformation</h2>
+        <p class="text-gray-500 max-w-2xl mx-auto text-lg leading-relaxed">
+            Witness how your compassion is creating a legacy of hope and dignity in Pakistan.
+        </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        
+        <div data-aos="zoom-in-up" data-aos-delay="100" class="bg-white rounded-[40px] p-8 shadow-xl border border-gray-100 flex flex-col items-center text-center group">
+            <div class="relative mb-8">
+                <div class="w-48 h-48 rounded-full overflow-hidden border-8 border-[#fff9f4] shadow-inner transition-transform duration-500 group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=400" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-2 -right-2 bg-[#ff6b00] text-white p-3 rounded-full shadow-lg">
+                    <i data-lucide="quote" class="w-6 h-6 fill-white"></i>
+                </div>
+            </div>
+            
+            <h3 class="text-2xl font-black text-[#1a1a1a] mb-2">A Future for Girls</h3>
+            <p class="text-[#ff6b00] font-bold text-sm uppercase tracking-widest mb-4">Education Impact</p>
+            <p class="text-gray-500 leading-relaxed italic">
+                "Al-Rabb Foundation gave me the chance to study both Deen and modern subjects. I feel confident and ready to serve my community."
             </p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+        <div data-aos="zoom-in-up" data-aos-delay="200" class="bg-white rounded-[40px] p-8 shadow-xl border border-gray-100 flex flex-col items-center text-center group">
+            <div class="relative mb-8">
+                <div class="w-48 h-48 rounded-full overflow-hidden border-8 border-[#f0fff9] shadow-inner transition-transform duration-500 group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400" class="w-full h-full object-cover">
+                </div>
+                <div class="absolute -bottom-2 -right-2 bg-[#10b981] text-white p-3 rounded-full shadow-lg">
+                    <i data-lucide="quote" class="w-6 h-6 fill-white"></i>
+                </div>
+            </div>
             
-            <div class="bg-white rounded-[40px] p-8 shadow-xl border border-gray-100 flex flex-col items-center text-center group">
-                <div class="relative mb-8">
-                    <div class="w-48 h-48 rounded-full overflow-hidden border-8 border-[#fff9f4] shadow-inner transition-transform duration-500 group-hover:scale-105">
-                        <img src="https://images.unsplash.com/photo-1503919005314-30d93d07d823?w=400" class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -bottom-2 -right-2 bg-[#ff6b00] text-white p-3 rounded-full shadow-lg">
-                        <i data-lucide="quote" class="w-6 h-6 fill-white"></i>
-                    </div>
-                </div>
-                
-                <h3 class="text-2xl font-black text-[#1a1a1a] mb-2">A Future for Girls</h3>
-                <p class="text-[#ff6b00] font-bold text-sm uppercase tracking-widest mb-4">Education Impact</p>
-                <p class="text-gray-500 leading-relaxed italic">
-                    "Al-Rabb Foundation gave me the chance to study both Deen and modern subjects. I feel confident and ready to serve my community."
-                </p>
-            </div>
-
-            <div class="bg-white rounded-[40px] p-8 shadow-xl border border-gray-100 flex flex-col items-center text-center group">
-                <div class="relative mb-8">
-                    <div class="w-48 h-48 rounded-full overflow-hidden border-8 border-[#f0fff9] shadow-inner transition-transform duration-500 group-hover:scale-105">
-                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400" class="w-full h-full object-cover">
-                    </div>
-                    <div class="absolute -bottom-2 -right-2 bg-[#10b981] text-white p-3 rounded-full shadow-lg">
-                        <i data-lucide="quote" class="w-6 h-6 fill-white"></i>
-                    </div>
-                </div>
-                
-                <h3 class="text-2xl font-black text-[#1a1a1a] mb-2">Compassion for Orphans</h3>
-                <p class="text-[#10b981] font-bold text-sm uppercase tracking-widest mb-4">Monthly Support</p>
-                <p class="text-gray-500 leading-relaxed italic">
-                    "After my father passed, we were lost. The foundation's monthly support ensured I stayed in school and my family never went hungry."
-                </p>
-            </div>
-
-            <div class="bg-white rounded-[40px] p-8 shadow-xl border border-gray-100 flex flex-col items-center text-center group">
-                <div class="relative mb-8">
-                    <div class="w-48 h-48 rounded-full overflow-hidden border-8 border-[#eff6ff] shadow-inner transition-transform duration-500 group-hover:scale-105">
-                        <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=400" class="h-full w-full object-cover">
-                    </div>
-                    <div class="absolute -bottom-2 -right-2 bg-[#3b82f6] text-white p-3 rounded-full shadow-lg">
-                        <i data-lucide="quote" class="w-6 h-6 fill-white"></i>
-                    </div>
-                </div>
-                
-                <h3 class="text-2xl font-black text-[#1a1a1a] mb-2">Health & Healing</h3>
-                <p class="text-[#3b82f6] font-bold text-sm uppercase tracking-widest mb-4">Medical Assistance</p>
-                <p class="text-gray-500 leading-relaxed italic">
-                    "When illness struck, we had no money for treatment. The foundation provided the medicines and support needed for a full recovery."
-                </p>
-            </div>
-
+            <h3 class="text-2xl font-black text-[#1a1a1a] mb-2">Compassion for Orphans</h3>
+            <p class="text-[#10b981] font-bold text-sm uppercase tracking-widest mb-4">Monthly Support</p>
+            <p class="text-gray-500 leading-relaxed italic">
+                "After my father passed, we were lost. The foundation's monthly support ensured I stayed in school and my family never went hungry."
+            </p>
         </div>
-    </section>
+
+        <div data-aos="zoom-in-up" data-aos-delay="300" class="bg-white rounded-[40px] p-8 shadow-xl border border-gray-100 flex flex-col items-center text-center group">
+            <div class="relative mb-8">
+                <div class="w-48 h-48 rounded-full overflow-hidden border-8 border-[#eff6ff] shadow-inner transition-transform duration-500 group-hover:scale-105">
+                    <img src="https://images.unsplash.com/photo-1542810634-71277d95dcbb?w=400" class="h-full w-full object-cover">
+                </div>
+                <div class="absolute -bottom-2 -right-2 bg-[#3b82f6] text-white p-3 rounded-full shadow-lg">
+                    <i data-lucide="quote" class="w-6 h-6 fill-white"></i>
+                </div>
+            </div>
+            
+            <h3 class="text-2xl font-black text-[#1a1a1a] mb-2">Health & Healing</h3>
+            <p class="text-[#3b82f6] font-bold text-sm uppercase tracking-widest mb-4">Medical Assistance</p>
+            <p class="text-gray-500 leading-relaxed italic">
+                "When illness struck, we had no money for treatment. The foundation provided the medicines and support needed for a full recovery."
+            </p>
+        </div>
+
+    </div>
+</section>
 
 
 
     <script>
+        // Add 'loading' class to body on start
+document.body.classList.add('loading');
+
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    
+    // Smoothly fade out
+    setTimeout(() => {
+        preloader.style.opacity = '0';
+        document.body.classList.remove('loading');
+        
+        // Remove from DOM after fade to keep site fast
+        setTimeout(() => {
+            preloader.style.display = 'none';
+        }, 700); 
+    }, 1000); // 1 second delay so the logo is actually seen
+});
     // Initialize icons immediately
     lucide.createIcons();
 
@@ -411,6 +563,35 @@
         }
     }
     setInterval(nextSlide, 6000);
+    const dot = document.getElementById('cursor-dot');
+const outline = document.getElementById('cursor-outline');
+
+window.addEventListener('mousemove', (e) => {
+    const posX = e.clientX;
+    const posY = e.clientY;
+
+    // The dot follows perfectly
+    dot.style.left = `${posX}px`;
+    dot.style.top = `${posY}px`;
+
+    // The outline follows with a slight delay for a "magnetic" feel
+    outline.animate({
+        left: `${posX}px`,
+        top: `${posY}px`
+    }, { duration: 500, fill: "forwards" });
+});
+
+// Add hover effect for Logo and Buttons
+const interactables = document.querySelectorAll('a, button, img, .swiper-slide');
+
+interactables.forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        outline.classList.add('cursor-grow');
+    });
+    el.addEventListener('mouseleave', () => {
+        outline.classList.remove('cursor-grow');
+    });
+});
 </script>
    <footer id="footer" class="bg-[#6a1b4d] text-white pt-20 pb-10">
     <div class="max-w-7xl mx-auto px-6">
@@ -478,5 +659,13 @@
         </div>
     </div>
 </footer>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000, // Speed of animation (1 second)
+    once: true,     // Animation happens only once while scrolling down
+    offset: 100     // Start animation 100px before the element is in view
+  });
+</script>
 </body>
 </html>
