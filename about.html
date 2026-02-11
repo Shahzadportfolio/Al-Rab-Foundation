@@ -95,24 +95,59 @@ a, button, .category-card, .hero-slide {
     </div>
 </header>
 
-    <section class="about-hero">
-        <div class="max-w-7xl mx-auto px-10 w-full relative z-10">
-            <h1 class="text-white text-7xl font-black mb-4">About Us</h1>
-            <div class="flex items-center gap-2 text-lg font-semibold">
-                <a href="index.html" class="text-[#ff6b00] hover:underline">Home</a>
-                <span class="text-white/50">|</span>
-                <span class="text-[#ffb380]">Who We Are</span>
+   <section class="about-hero relative overflow-hidden">
+    <div class="absolute inset-0 bg-[#3e447a]/60"></div>
+
+    <div class="max-w-7xl mx-auto px-6 md:px-10 w-full relative z-10">
+        <div class="max-w-3xl" data-aos="fade-right" data-aos-duration="1500">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-6">
+                <span class="w-2 h-2 bg-[#ff6b00] rounded-full animate-pulse"></span>
+                
+            </div>
+
+            <h1 class="text-white text-6xl md:text-8xl font-black mb-6 tracking-tighter leading-none">
+                About <span class="text-[#ff6b00]">Us.</span>
+            </h1>
+
+            <div class="flex items-center gap-4 bg-black/20 backdrop-blur-sm w-fit px-6 py-3 rounded-2xl border border-white/10">
+                <a href="index.html" class="text-white/80 hover:text-[#ff6b00] transition-colors font-bold text-sm"></a>
+                <i data-lucide="chevron-right" class="w-4 h-4 text-white/30"></i>
+                <span class="text-[#ffb380] font-bold text-sm tracking-wide"></span>
             </div>
         </div>
-    </section>
-
-    <section class="max-w-7xl mx-auto px-6 py-24 bg-white overflow-hidden">
-    <div class="text-center mb-16" data-aos="fade-up">
-        <p class="text-[#3e447a] font-bold uppercase tracking-widest text-sm mb-2">Welcome to Al-Rabb Foundation</p>
-        <h2 class="text-5xl md:text-6xl font-black text-[#1a1a1a] leading-tight">
-            Empowering Girls. Supporting Orphans. <br> Serving Humanity.
-        </h2>
     </div>
+
+    <div class="absolute bottom-0 left-0 w-full leading-[0] z-20">
+        <svg viewBox="0 0 1440 100" fill="none" class="w-full h-auto">
+            <path d="M0 100H1440V40C1380 45 1300 60 1200 55C1100 50 1050 20 950 25C850 30 800 65 700 60C600 55 500 25 400 30C300 35 150 70 0 40V100Z" fill="#fdfbf2"/>
+        </svg>
+    </div>
+</section>
+
+    <section class="max-w-7xl mx-auto px-6 py-28 bg-white overflow-hidden">
+    <div class="space-y-4">
+        <p class="text-[#ff6b00] font-bold uppercase tracking-[0.3em] text-xs mb-6" data-aos="fade-up">
+            Welcome to Al-Rabb Foundation
+        </p>
+
+        <h2 class="text-6xl md:text-8xl font-black text-[#1a1a1a] leading-[0.9] tracking-tighter" data-aos="fade-up" data-aos-delay="200">
+            Empowering <span class="text-[#ff6b00]">Girls.</span>
+        </h2>
+        
+        <h2 class="text-6xl md:text-8xl font-black text-[#1a1a1a] leading-[0.9] tracking-tighter" data-aos="fade-up" data-aos-delay="400">
+            Supporting <span class="text-[#3e447a]">Orphans.</span>
+        </h2>
+        
+        <div class="flex flex-col md:flex-row md:items-end gap-6" data-aos="fade-up" data-aos-delay="600">
+            <h2 class="text-6xl md:text-8xl font-black text-[#1a1a1a] leading-[0.9] tracking-tighter">
+                Serving Humanity.
+            </h2>
+            <p class="text-gray-400 text-lg md:text-xl font-medium italic pb-2">
+                Across Pakistan.
+            </p>
+        </div>
+    </div>
+</section>
 
     <div class="grid lg:grid-cols-2 gap-20 items-center">
         <div class="relative flex justify-center items-center" data-aos="fade-right" data-aos-duration="1200">
